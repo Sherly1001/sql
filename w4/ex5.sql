@@ -41,8 +41,8 @@ where department_id = 90;
 -- 8
 select d.department_id, d.department_name, d.manager_id, e.first_name
 from departments d
-inner join employees e
-on (d.manager_id = e.employee_id);
+join employees e
+on d.manager_id = e.employee_id;
 
 -- 9
 select d.department_name, e.first_name, l.city
@@ -58,19 +58,19 @@ natural join jobs
 group by job_title;
 
 -- 11
-select job_title, first_name, salary-min_salary 'Salary - Min_Salary'
+select job_title, first_name, salary - min_salary "Salary - Min_Salary"
 from employees
 natural join jobs;
 
 -- 12
 select jh.* from job_history jh
 join employees e
-on (jh.employee_id = e.employee_id)
+on jh.employee_id = e.employee_id
 where salary > 10000;
 
 -- 13
 select first_name, last_name, hire_date, salary,
-(datediff(now(), hire_date))/365 experience
+(datediff(now(), hire_date)) / 365 experience
 from departments d join employees e
 on (d.manager_id = e.employee_id)
-where (datediff(now(), hire_date))/365>15;
+where (datediff(now(), hire_date)) / 365 > 15;
